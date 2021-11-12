@@ -15,14 +15,12 @@
     }
     </style>
 
-    <h1>Wish list Items</h1>
-
-    {% for item in item_list %}
-
-    {% empty %}
-    <h3>No Wish Items Exist</h3>
+    <h1>Add list Items</h1>
     <hr>
-    {% endfor %}
-    <a class="pure-button" href="{% url 'item_form' %}">Add A Wish List Item</a>
+    <form class="pure-form" action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+    <a class="pure-button" href="{% url 'item_list' %}">Add Item</a>
 </body>
 </html>
