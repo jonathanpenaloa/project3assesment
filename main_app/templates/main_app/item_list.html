@@ -9,20 +9,36 @@
 </head>
 <body>
     <style>
-        body {
+
+    body {
     text-align: center;
     margin: 2rem;
     }
-    </style>
 
-    <h1>Wish list Items</h1>
+    table {
+    margin: 2rem auto;
+    }
 
+</style>
+<h1>Wish list Items</h1>
+    <table class="pure-table pure-table-striped">
     {% for item in item_list %}
-
-    {% empty %}
-    <h3>No Wish Items Exist</h3>
-    <hr>
-    {% endfor %}
+        <thead>
+            <tr>
+                <th>{{ item.description }}</th>
+                <th>
+                    <form action="{% url 'item_delete' item.id %}" type="submit" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">X</button>
+                    </form>
+                </th>
+            </tr>
+        </thead>
+        {% empty %}
+        <h3>No Wish Items Exist</h3>
+        <hr>
+        {% endfor %}
+    </table>
     <a class="pure-button" href="{% url 'item_form' %}">Add A Wish List Item</a>
 </body>
 </html>
