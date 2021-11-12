@@ -14,7 +14,16 @@
     margin: 2rem;
     }
     </style>
-    
+
     <h1>Wish list Items</h1>
+
+    {% for item in item_list %}
+
+    {% empty %}
+    <h3>No Wish Items Exist</h3>
+    <hr>
+    {% endfor %}
+    
+
 </body>
 </html>
